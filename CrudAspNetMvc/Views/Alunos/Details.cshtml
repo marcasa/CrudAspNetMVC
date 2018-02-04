@@ -1,0 +1,73 @@
+﻿@model CrudAspNetMvc.Models.Aluno
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div class="row">
+    <h1>@Html.DisplayFor(model => model.PostoGrad)  @Html.DisplayFor(model => model.NomeGuerra)</h1>
+    <hr />
+
+    <div class="col-lg-4 txtDetails">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PostoGrad)
+            </dt>
+
+            <dd class="">
+                @Html.DisplayFor(model => model.PostoGrad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RE)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RE)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OPM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OPM)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SitFuncional)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SitFuncional)
+            </dd>
+
+
+
+        </dl>
+    </div>
+    <div class="col-lg-4">
+        <img src="@Html.DisplayFor(model => model.Foto)" width="350" height="450" />
+    </div>
+    <div class="col-lg-4">
+        
+    </div>
+
+</div>
+<div class="row" style="text-align:center">
+    <hr />
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+</div>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CrudAspNetMvc.Models.Aluno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Efetivo</h2>
+<div class="row">
+    <div class="col-lg-6">
+        @using (Html.BeginForm("BuscaNome", "Alunos", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <input type="text" placeholder="Buscar por nome" name="busca" class="form-control" />
+            <input type="submit" class="btn btn-default" value="Buscar" />
+        }
+
+    </div>
+
+    <div class="col-lg-6">
+        @using (Html.BeginForm("Index", "Alunos", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <input class="form-check-input" type="radio" name="buscaOPM" value="EM" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                EM
+            </label>
+
+
+            <input class="form-check-input" type="radio" name="buscaOPM" value="1ª CiaPTran">
+            <label class="form-check-label" for="exampleRadios2">
+                1ª CiaPTran
+            </label>
+
+
+            <input class="form-check-input" type="radio" name="buscaOPM" value="2ª CiaPTran">
+            <label class="form-check-label" for="exampleRadios2">
+                2ª CiaPTran
+            </label>
+
+
+            <input class="form-check-input" type="radio" name="buscaOPM" value="3ª CiaPTran">
+            <label class="form-check-label" for="exampleRadios2">
+                3ª CiaPTran
+            </label>
+
+
+            <input type="submit" class="btn btn-default" value="Filtrar" />
+
+
+        }
+    </div>
+    </div>
+
+    <hr />
+
+
+    <p>
+        @Html.ActionLink("Adicionar novo", "Create")
+
+    </p>
+    <div class="col-lg-12" style="display: inline;">
+        @foreach (var item in Model.OrderBy(a => a.PostoGradCod).ThenBy(a => a.RE))
+        {
+
+            <div class="pm ">
+                <div class="foto ">
+                    <img src="@item.Foto" />
+                </div>
+                <div class="postoGradNome" >
+                    @Html.DisplayFor(modelItem => item.PostoGrad)
+                    @Html.DisplayFor(modelItem => item.RE)
+                </div>
+                <div class="postoGradNome">
+                    @Html.DisplayFor(modelItem => item.NomeGuerra)
+                </div>
+                <div class="botoes">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
+                </div>
+            </div>
+
+
+        }
+     </div>
